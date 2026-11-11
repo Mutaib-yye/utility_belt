@@ -73,9 +73,9 @@ const T_INTL = wordT('international');
 // ---- B-roll: few, gentle cross-fades ----
 type B = {start: number; end: number; src: string; fx: number; fy: number};
 const BROLL: B[] = [
-  {start: wordT('someone'), end: T_47 - 0.25, src: 'broll/couple.jpg', fx: 60, fy: 40},
-  {start: T_FLOWERS, end: T_CAKE, src: 'broll/roses.jpg', fx: 45, fy: 40},
-  {start: T_CAKE, end: T_HAMPERS, src: 'broll/cake.jpg', fx: 62, fy: 45},
+  {start: wordT('someone'), end: T_47 - 0.25, src: 'broll/gift.jpg', fx: 50, fy: 55},
+  {start: T_FLOWERS, end: T_CAKE, src: 'broll/flowers.jpg', fx: 50, fy: 82},
+  {start: T_CAKE, end: T_HAMPERS, src: 'broll/cake.jpg', fx: 50, fy: 50},
 ];
 const FADE = 0.22; // seconds
 
