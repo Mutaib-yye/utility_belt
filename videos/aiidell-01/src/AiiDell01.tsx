@@ -65,7 +65,6 @@ const T_FLOWERS = wordT('Flowers');
 const T_CAKE = wordT('Cake');
 const T_HAMPERS = wordT('Hampers');
 const T_NOW = wordT('now');
-const T_BETWEEN = wordT('between');
 const T_INDIA = wordT('India');
 const T_INDONESIA = wordT('Indonesia');
 const T_AIIDELL = wordT('AiiDell');
@@ -74,11 +73,9 @@ const T_INTL = wordT('international');
 // ---- B-roll: few, gentle cross-fades ----
 type B = {start: number; end: number; src: string; fx: number; fy: number};
 const BROLL: B[] = [
-  {start: wordT('someone'), end: T_47 - 0.25, src: 'broll/sunset-couple.jpg', fx: 55, fy: 60},
-  {start: T_FLOWERS, end: T_CAKE, src: 'broll/tile-flowers.jpg', fx: 50, fy: 50},
-  {start: T_CAKE, end: T_HAMPERS, src: 'broll/hero-birthday-in.jpg', fx: 62, fy: 55},
-  {start: T_HAMPERS, end: T_NOW, src: 'broll/tile-hampers.jpg', fx: 50, fy: 50},
-  {start: T_BETWEEN, end: timeline.speechEnds[2] + 0.1, src: 'broll/everyday-india.jpg', fx: 45, fy: 45},
+  {start: wordT('someone'), end: T_47 - 0.25, src: 'broll/couple.jpg', fx: 60, fy: 40},
+  {start: T_FLOWERS, end: T_CAKE, src: 'broll/roses.jpg', fx: 45, fy: 40},
+  {start: T_CAKE, end: T_HAMPERS, src: 'broll/cake.jpg', fx: 62, fy: 45},
 ];
 const FADE = 0.22; // seconds
 
@@ -352,15 +349,6 @@ const Panel: React.FC = () => {
   );
 };
 
-// ---------- Music: soft bed, ducked under the voice, lifts on the end card ----------
-const musicVolume = (f: number) => {
-  const t = f / FPS;
-  const fadeIn = interpolate(t, [0, 0.8], [0, 1], {extrapolateRight: 'clamp'});
-  const lift = interpolate(t, [VIDEO_END - 0.2, VIDEO_END + 0.4], [0.16, 0.42], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
-  const fadeOut = interpolate(t, [TOTAL_SECONDS - 1.0, TOTAL_SECONDS], [1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
-  return fadeIn * lift * fadeOut;
-};
-
 export const AiiDell01: React.FC = () => (
   <AbsoluteFill>
     <AnimatedBackground />
@@ -375,6 +363,5 @@ export const AiiDell01: React.FC = () => (
     <Panel />
     <Subtitles />
     <Audio src={staticFile('panel.mp4')} />
-    <Audio src={staticFile('music.wav')} volume={musicVolume} />
   </AbsoluteFill>
 );
