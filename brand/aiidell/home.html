@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en" style="color-scheme: light only;">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- AI Motion Cuan: the course has its own light page at /motioncourse/ (it does not need the shop app).
+         Old links to /ai-motion-cuan jump there BEFORE the shop bundle downloads. If /motioncourse/ were ever
+         served by this same app, it renders the course too (no loop: only the old path redirects). -->
+    <script>
+      (function () {
+        try {
+          var raw = location.pathname, p = raw.replace(/\/+$/, "");
+          // old path (any form) and the no-slash form of the new path both jump to the light page
+          if (p === "/ai-motion-cuan" || raw === "/motioncourse") location.replace("/motioncourse/" + location.search + location.hash);
+        } catch (e) {}
+      })();
+    </script>
+    <!-- Security headers (defense-in-depth) -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(self), payment=(self), interest-cohort=()" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: https://www.googleadservices.com https://googleads.g.doubleclick.net https://*.google.com https://*.supabase.co https://checkout.razorpay.com https://*.razorpay.com https://connect.facebook.net https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net https://*.facebook.net https://*.facebook.com; worker-src 'self' blob:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https: https://www.facebook.com; media-src 'self' blob: data: https:; connect-src 'self' https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://*.googleadservices.com https://*.google.com https://*.doubleclick.net https://*.supabase.co wss://*.supabase.co https://checkout.razorpay.com https://*.razorpay.com https://www.facebook.com https://connect.facebook.net https://api.brevo.com https://www.google-analytics.com https://*.r2.dev https://api.ipify.org https://ipapi.co https://unpkg.com https://cdn.jsdelivr.net https://lottie.host https://*.lottie.host https://connect.facebook.net https://*.facebook.net https://*.facebook.com; frame-src 'self' https://checkout.razorpay.com https://*.razorpay.com https://www.facebook.com https://*.facebook.com; object-src 'none'; base-uri 'self'; form-action 'self' https://checkout.razorpay.com https://*.razorpay.com https://www.facebook.com;" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-621723520"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-621723520');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#DC2626">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="AiiDell">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Google Search Console verification -->
+    <meta name="google-site-verification" content="cpQux3WwrtVJdCWifQltifKBvNo5k_5flqYkd9Q573Y" />
+
+    <!-- Cursive display font used by the welcome reveal: fetched in the head so
+         the animated line never appears late in a fallback face. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap">
+    <!-- AiiDell Freebie shuffle game (checkout goodie mini-game): DM Sans for
+         body text, Baloo 2 for the chunky comic-sticker display face. -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Baloo+2:wght@500;600;700;800&display=swap">
+
+    <!-- Performance: preconnect / dns-prefetch to first-party + critical third-parties -->
+    <link rel="preconnect" href="https://irlerugcdvzopptzmnbt.supabase.co" crossorigin>
+    <!-- Product photos are resized by wsrv.nl (see src/lib/shop/productImage.ts) -->
+    <link rel="preconnect" href="https://wsrv.nl">
+    <link rel="dns-prefetch" href="https://irlerugcdvzopptzmnbt.supabase.co">
+    <link rel="preconnect" href="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev" crossorigin>
+    <link rel="dns-prefetch" href="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev">
+    <link rel="dns-prefetch" href="https://api.brevo.com">
+    <link rel="dns-prefetch" href="https://ipapi.co">
+
+    <!-- LCP: first homepage hero slide -->
+    <link rel="preload" as="image" fetchpriority="high" href="/assets/hero-1-gifts-cVcibyFp.jpg">
+
+
+
+    <title>AiiDell — Send Gifts Between India & Indonesia</title>
+    <meta name="description" content="Send gifts, flowers, chocolates, hampers and handwritten letters between India and Indonesia. Bought locally, delivered fast, paid in your own currency.">
+
+
+    <meta name="author" content="AiiDell Gifting" />
+    <meta name="keywords" content="send gifts to india, send gifts to indonesia, cross-border gifting india indonesia, long distance relationship gifts, ldr gifts, send flowers to india, send flowers to indonesia, jastip india, kirim hadiah ke india, भारत से इंडोनेशिया गिफ्ट, hadiah jarak jauh">
+
+    <!-- Tell AI answer engines and crawlers exactly what they may do -->
+    <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+    <meta name="googlebot" content="index,follow">
+
+    <!-- Geo targeting -->
+    <meta name="geo.region" content="IN" />
+    <meta name="geo.region" content="ID" />
+    <meta name="geo.placename" content="India, Indonesia" />
+
+    <!-- Hreflang: distinguish Indonesia (id-ID) from India (en-IN, hi-IN) -->
+    <link rel="alternate" hreflang="en" href="https://aiidell.com/" />
+    <link rel="alternate" hreflang="en-IN" href="https://aiidell.com/" />
+    <link rel="alternate" hreflang="hi-IN" href="https://aiidell.com/" />
+    <link rel="alternate" hreflang="id-ID" href="https://aiidell.com/" />
+    <link rel="alternate" hreflang="x-default" href="https://aiidell.com/" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Send Gifts Between India & Indonesia | AiiDell">
+    <meta property="og:description" content="Trusted cross-border gifting for LDR couples and families. Flowers, chocolates, hampers, love letters & recharges between India and Indonesia.">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://aiidell.com" />
+    <meta property="og:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/e77006da-9dcd-488b-9415-1c9f1b0b8b80/id-preview-89d0ba41--3ed7c810-86cb-4a95-9a20-a6e02011c7cd.lovable.app-1772686012939.png">
+    <meta property="og:site_name" content="AiiDell Gifting" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="hi_IN" />
+    <meta property="og:locale:alternate" content="id_ID" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Send Gifts Between India & Indonesia | AiiDell">
+    <meta name="twitter:description" content="Trusted cross-border gifting for LDR couples and families between India and Indonesia.">
+    <meta name="twitter:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/e77006da-9dcd-488b-9415-1c9f1b0b8b80/id-preview-89d0ba41--3ed7c810-86cb-4a95-9a20-a6e02011c7cd.lovable.app-1772686012939.png">
+
+    <!-- Sitewide JSON-LD: Organization (identity) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "AiiDell Gifting",
+      "alternateName": "AiiDell",
+      "url": "https://aiidell.com",
+      "logo": "https://aiidell.com/pwa-192.png",
+      "description": "Cross-border gifting service connecting India and Indonesia. Send flowers, chocolates, hampers, handwritten love letters, gift hampers and mobile recharges across borders.",
+      "areaServed": [
+        { "@type": "Country", "name": "India" },
+        { "@type": "Country", "name": "Indonesia" }
+      ],
+      "knowsLanguage": ["en", "hi", "id"],
+      "sameAs": [
+        "https://www.instagram.com/jastipindiaaiidell",
+        "https://www.tiktok.com/@jastipindiaaiidell",
+        "https://youtube.com/@aiidellofficial"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "availableLanguage": ["English", "Hindi", "Indonesian"],
+        "areaServed": ["IN", "ID"]
+      }
+    }
+    </script>
+
+    <!-- Sitewide JSON-LD: WebSite + SearchAction -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "AiiDell Gifting",
+      "url": "https://aiidell.com",
+      "inLanguage": ["en", "hi", "id"],
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://aiidell.com/shop?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <!-- Sitewide JSON-LD: FAQ (answers AI engines surface directly) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does AiiDell send gifts between India and Indonesia?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "AiiDell partners with verified local merchants and florists in both countries. You order from the country you are in, we route the gift through our local network in the destination country, and you get end-to-end tracking with delivery in as little as same day."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need an account to send a gift on AiiDell?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. AiiDell uses an account-free model with email OTP verification. You can place an order, track it, and receive updates without creating a password."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What payment methods does AiiDell accept?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Indonesian customers (IDR) pay online (bank virtual account, OVO, DANA, ShopeePay or QRIS) or by bank transfer. Indian customers (INR) pay via UPI or bank transfer with manual screenshot verification."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does delivery take between India and Indonesia?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Local in-country deliveries can be same-day or next-day. Cross-border physical items (like handwritten letters or souvenirs) typically take 7–14 days depending on courier and customs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I send flowers from India to Indonesia or Jakarta?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. AiiDell works with Indonesian florists in Jakarta, Bali, Surabaya, Bandung and other major cities to deliver fresh flower bouquets ordered from anywhere in the world, including India."
+          }
+        }
+      ]
+    }
+    </script>
+    <script>
+      /* Platform cutover guard — runs before any app code.
+         Sessions issued by the previous backend can never be refreshed by the
+         new one, so we clear them cleanly here instead of letting the app hit
+         a 401 mid-flow. Nothing else is touched: cart, market, language,
+         drafts and consent all survive. */
+      (function () {
+        try {
+          var REF = "irlerugcdvzopptzmnbt";
+          var stale = [];
+          for (var i = 0; i < localStorage.length; i++) {
+            var k = localStorage.key(i);
+            if (!k) continue;
+            var isAuth = (k.indexOf("sb-") === 0 && k.indexOf("-auth-token") > -1) || k.indexOf("supabase.auth") > -1;
+            if (isAuth && k.indexOf(REF) === -1) stale.push(k);
+          }
+          if (stale.length) {
+            for (var j = 0; j < stale.length; j++) localStorage.removeItem(stale[j]);
+            [
+              "aiidell_verified_email",
+              "aiidell_verified_at",
+              "aiidell-verified-email",
+              "aiidell_admin_sessions"
+            ].forEach(function (k) {
+              try { localStorage.removeItem(k); sessionStorage.removeItem(k); } catch (e) {}
+            });
+            try { localStorage.setItem("aiidell-backend-cutover-notice", "1"); } catch (e) {}
+          }
+        } catch (e) { /* never block boot */ }
+      })();
+    </script>
+    <style id="aiidell-badge-guard">#lovable-badge,a#lovable-badge,[id^="lovable-badge"],a[href*="lovable.dev"][target="_blank"][style*="position: fixed"],iframe[src*="lovable.dev/badge"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;width:0!important;height:0!important;overflow:hidden!important;position:absolute!important;left:-9999px!important}</style>
+    <script>(function(){function k(){document.querySelectorAll('#lovable-badge,[id^="lovable-badge"]').forEach(function(e){e.remove()})}k();document.addEventListener('DOMContentLoaded',k);new MutationObserver(k).observe(document.documentElement,{childList:true,subtree:true});})();</script>
+    <script type="module" crossorigin src="/assets/main-CG5XzDLj.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/index.esm-CswUthuO.js">
+    <link rel="modulepreload" crossorigin href="/assets/faspayCheckout-DUsrWQvo.js">
+    <link rel="stylesheet" crossorigin href="/assets/main-byjAJ2L_.css">
+  <script defer src="/__l5e/events.270c78a44fc53e7b.js" data-artifact-kind="dwl_content_hash" data-artifact-id="495d8484b264aff491732e2783e1855ea01cbc0789fba32ad5a19ab217317303" data-commit-sha="fc49acdf75fb015d88c2f70ece29f0260cac737b" data-context-token="v1.eyJwcm9qZWN0X2lkIjoibG92cF80c25qMWd0Y3dtODYwOXR3dDRhdjEyc25lcSIsImFydGlmYWN0X2tpbmQiOiJkd2xfY29udGVudF9oYXNoIiwiYXJ0aWZhY3RfaWQiOiI0OTVkODQ4NGIyNjRhZmY0OTE3MzJlMjc4M2UxODU1ZWEwMWNiYzA3ODlmYmEzMmFkNWExOWFiMjE3MzE3MzAzIiwiY29tbWl0X3NoYSI6ImZjNDlhY2RmNzVmYjAxNWQ4OGMyZjcwZWNlMjlmMDI2MGNhYzczN2IiLCJleHAiOjE3OTY5ODg1NzJ9._2sLtZe3P3AquRXIM4aAlsidwrLR4bbZt2MZ25KG8oo" data-autocapture="1" data-consent="1"></script></head>
+
+
+  <body>
+    <script>
+      // Apply cached theme class instantly to prevent flash of wrong theme
+      try {
+        if (localStorage.getItem('aiidell_design_theme') === 'advanced') {
+          document.documentElement.classList.add('theme-advanced');
+        }
+      } catch(e) {}
+    </script>
+    <div id="root"></div>
+    <!-- AEO-friendly noscript fallback (also helps non-JS crawlers understand the site) -->
+    <noscript>
+      <h1>AiiDell — Send Gifts Between India and Indonesia</h1>
+      <p>AiiDell (aiidell.com) is a cross-border gifting service for long-distance couples, families and friends connecting India, Indonesia and Malaysia. Send flowers, chocolates, hampers, handwritten love letters, mobile recharges and, for India-bound orders, hot food and cakes, with end-to-end tracking. Please enable JavaScript to use the full app, or visit our <a href="/blog">blog</a> and <a href="/shop">shop</a>.</p>
+      <p>Contact: <a href="mailto:support@aiidell.com">support@aiidell.com</a> &middot; <a href="/privacy">Privacy Policy</a> &middot; <a href="/terms">Terms of Service</a> &middot; <a href="/policies">All policies</a></p>
+    </noscript>
+  </body>
+</html>
