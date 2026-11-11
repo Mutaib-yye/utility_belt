@@ -269,7 +269,7 @@ const EndCard: React.FC = () => {
 };
 
 // ---------- Subtitles: phrase on screen, active word yellow, key words orange ----------
-const PHRASE_LENGTHS = [3, 3, 2, 3, 3, 3, 1, 1, 1, 1, 1, 4, 2, 3, 3, 2, 2, 1, 2, 3, 3, 2];
+const PHRASE_LENGTHS = [3, 3, 2, 3, 3, 3, 1, 1, 1, 1, 1, 4, 2, 3, 2, 2, 1, 2, 3, 3, 2];
 const PHRASES: {start: number; words: (W & {i: number})[]}[] = (() => {
   const out: {start: number; words: (W & {i: number})[]}[] = [];
   let i = 0;
@@ -320,10 +320,9 @@ const BRollLayer: React.FC = () => {
       {BROLL.map((b) => {
         const op = fadeWindow(t, b.start, b.end);
         if (op <= 0) return null;
-        const push = interpolate(t, [b.start, b.end], [1.03, 1.09]);
         return (
           <AbsoluteFill key={b.src} style={{opacity: op}}>
-            <Img src={staticFile(b.src)} style={{width: '100%', height: '100%', objectFit: 'cover', objectPosition: `${b.fx}% ${b.fy}%`, transform: `scale(${push})`}} />
+            <Img src={staticFile(b.src)} style={{width: '100%', height: '100%', objectFit: 'cover', objectPosition: `${b.fx}% ${b.fy}%`, transform: 'none'}} />
             <AbsoluteFill style={{background: 'linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.32) 100%)'}} />
           </AbsoluteFill>
         );
@@ -334,19 +333,27 @@ const BRollLayer: React.FC = () => {
 
 const Panel: React.FC = () => {
   const t = useT();
-  // one framing per clip; the change of framing hides the join between takes
-  const zoom = t < SEG[1] ? 1 : t < SEG[2] ? 1.08 : t < SEG[3] ? 1 : 1.06;
+  // one steady framing for the whole video (no zooms)
   const freezeAt = Math.round(VIDEO_END * FPS) - 2;
   const video = <OffthreadVideo muted src={staticFile('panel.mp4')} style={{width: '100%', height: '100%', objectFit: 'cover'}} />;
   return (
     <div style={{position: 'absolute', left: 36, right: 36, top: 900, height: 1100, borderRadius: 48, overflow: 'hidden',
       boxShadow: '0 -10px 40px rgba(120,20,10,0.16)', background: '#000', border: '6px solid #fff'}}>
-      <div style={{width: '100%', height: '100%', transform: `scale(${zoom})`, transformOrigin: '50% 30%'}}>
+      <div style={{width: '100%', height: '100%', transform: 'none'}}>
         {t * FPS < freezeAt ? video : <Freeze frame={freezeAt}>{video}</Freeze>}
       </div>
       <BRollLayer />
     </div>
   );
+};
+
+// ---------- Music: soft plucked bed under the voice, lifts a little on the end card ----------
+const musicVolume = (f: number) => {
+  const t = f / FPS;
+  const fadeIn = interpolate(t, [0, 0.6], [0, 1], {extrapolateRight: 'clamp'});
+  const level = interpolate(t, [VIDEO_END - 0.2, VIDEO_END + 0.4], [0.22, 0.45], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+  const fadeOut = interpolate(t, [TOTAL_SECONDS - 1.0, TOTAL_SECONDS], [1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+  return fadeIn * level * fadeOut;
 };
 
 export const AiiDell01: React.FC = () => (
@@ -363,5 +370,6 @@ export const AiiDell01: React.FC = () => (
     <Panel />
     <Subtitles />
     <Audio src={staticFile('panel.mp4')} />
+    <Audio src={staticFile('music.wav')} volume={musicVolume} />
   </AbsoluteFill>
 );

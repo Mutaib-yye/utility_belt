@@ -5,6 +5,7 @@ import sys, numpy as np, wave
 SR = 48000
 BPM = 76
 BEAT = 60 / BPM
+WITH_PAD = False  # sustained pad removed: it can read as humming under a voice
 DUR = float(sys.argv[2]) if len(sys.argv) > 2 else 24.0
 rng = np.random.default_rng(7)
 
@@ -58,7 +59,7 @@ pattern = [0, 2, 4, 5, 3, 4, 2, 1]  # gentle up-down arpeggio, eighth notes
 for b in range(nbars):
     ch = CHORDS[b % 4]
     t0 = b * bar
-    add(pad(ch, bar + 1.0), t0)
+    if WITH_PAD: add(pad(ch, bar + 1.0), t0)
     add(0.55 * pluck(hz(ch[0] - 12), 3.0, 0.45), t0)  # soft bass note
     for k, idx in enumerate(pattern):
         vel = 0.33 if k % 2 == 0 else 0.24
