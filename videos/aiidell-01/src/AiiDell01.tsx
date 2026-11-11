@@ -95,8 +95,8 @@ const usePop = (start: number, damping = 14) => {
 
 // ---------- Animated background (slow, calm) ----------
 const BG_STOPS = [0, SEG[1], SEG[2], SEG[3], SEG[4], TOTAL_SECONDS];
-const BG_TOP = ['#FFE9E5', '#FFE4D2', '#FFE1E8', '#FFE9E5', '#FFDCD6', '#FFDCD6'];
-const BG_BOTTOM = ['#FFC9C1', '#FFC8A8', '#FFBFCF', '#FFC9C1', '#FFB8AE', '#FFB8AE'];
+const BG_TOP = ['#E80A0A', '#E3120E', '#E80A0A', '#DF0B12', '#E80A0A', '#E80A0A'];
+const BG_BOTTOM = ['#8E0306', '#930805', '#8A0410', '#8E0306', '#7E0205', '#7E0205'];
 const ICONS = ['♥', '✈', '✉', '♥', '★', '♥', '✈', '✉', '♥', '★'];
 
 const AnimatedBackground: React.FC = () => {
@@ -111,20 +111,20 @@ const AnimatedBackground: React.FC = () => {
   const draw = interpolate(t, [SEG[3], T_INTL], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.inOut(Easing.cubic)});
   return (
     <AbsoluteFill style={{background: `linear-gradient(180deg, ${top} 0%, ${bottom} 100%)`, overflow: 'hidden'}}>
-      {blob(-120, -80, 560, AMBER, 0.35, 0, 0.18)}
-      {blob(620, 260, 520, RED, 0.3, 2, 0.1)}
-      {blob(120, 620, 480, '#FF7FA0', 0.4, 4, 0.14)}
+      {blob(-120, -80, 560, '#FF6A3D', 0.35, 0, 0.35)}
+      {blob(620, 260, 520, '#FFFFFF', 0.3, 2, 0.08)}
+      {blob(120, 620, 480, AMBER, 0.4, 4, 0.12)}
       {ICONS.map((ic, i) => {
         const speed = 22 + (i % 4) * 8;
         const x = (i * 109 + 40) % 1000;
         const y = 900 - ((t * speed + i * 170) % 1000);
         return (
-          <div key={i} style={{position: 'absolute', left: x, top: y, fontSize: 40 + (i % 3) * 14, color: RED,
-            opacity: 0.13, transform: `rotate(${Math.sin(t * 0.8 + i) * 12}deg)`, fontFamily: DISPLAY}}>{ic}</div>
+          <div key={i} style={{position: 'absolute', left: x, top: y, fontSize: 40 + (i % 3) * 14, color: '#FFFFFF',
+            opacity: 0.12, transform: `rotate(${Math.sin(t * 0.8 + i) * 12}deg)`, fontFamily: DISPLAY}}>{ic}</div>
         );
       })}
       <svg width={1080} height={420} style={{position: 'absolute', top: 40, left: 0}} viewBox="0 0 1080 420">
-        <path d="M 40 360 C 260 60, 820 60, 1040 300" fill="none" stroke={RED} strokeOpacity={0.35} strokeWidth={6}
+        <path d="M 40 360 C 260 60, 820 60, 1040 300" fill="none" stroke="#FFFFFF" strokeOpacity={0.45} strokeWidth={6}
           strokeDasharray="18 16" style={{clipPath: `inset(0 ${(1 - draw) * 100}% 0 0)`}} />
       </svg>
     </AbsoluteFill>
@@ -138,10 +138,10 @@ const Header: React.FC = () => {
   const s = t < T_AIIDELL ? 1 : interpolate(bounce, [0, 1], [1.15, 1]);
   return (
     <div style={{position: 'absolute', top: 96 + Math.sin(t * 1.4) * 4, left: 0, right: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6}}>
-      <Img src={staticFile('logo.png')} style={{width: 270, transform: `scale(${s})`, borderRadius: 20, boxShadow: '0 10px 30px rgba(236,2,2,0.22)'}} />
-      <div style={{fontFamily: DISPLAY, fontWeight: 800, fontSize: 70, color: INK, lineHeight: 1, marginTop: 18, display: 'flex', alignItems: 'baseline', gap: 18}}>
+      <Img src={staticFile('logo.png')} style={{width: 270, transform: `scale(${s})`, borderRadius: 24, border: '5px solid #FFFFFF', boxShadow: '0 12px 30px rgba(60,0,0,0.35)'}} />
+      <div style={{fontFamily: DISPLAY, fontWeight: 800, fontSize: 70, color: '#FFFFFF', lineHeight: 1, marginTop: 18, display: 'flex', alignItems: 'baseline', gap: 18}}>
         Gifts across
-        <span style={{fontFamily: SCRIPT, fontWeight: 400, fontSize: 112, color: RED, lineHeight: 0.8}}>borders</span>
+        <span style={{fontFamily: SCRIPT, fontWeight: 400, fontSize: 112, color: '#FFD23F', lineHeight: 0.8}}>borders</span>
       </div>
     </div>
   );
@@ -257,13 +257,13 @@ const EndCard: React.FC = () => {
   const op = interpolate(t, [VIDEO_END - 0.15, VIDEO_END + 0.25], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
   if (op <= 0) return null;
   return (
-    <div style={{position: 'absolute', left: 80, right: 80, top: 430, height: 330, background: RED, borderRadius: 34,
+    <div style={{position: 'absolute', left: 80, right: 80, top: 430, height: 330, background: '#FFFFFF', borderRadius: 34,
       display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 10, opacity: op,
       transform: `translateY(${(1 - op) * 20}px)`, boxShadow: '0 18px 40px rgba(120,20,10,0.25)'}}>
-      <div style={{fontFamily: DISPLAY, fontWeight: 800, fontSize: 84, color: '#fff', lineHeight: 1}}>
-        Comment <span style={{background: '#fff', color: RED, borderRadius: 18, padding: '0 22px'}}>GIFT</span>
+      <div style={{fontFamily: DISPLAY, fontWeight: 800, fontSize: 84, color: INK, lineHeight: 1}}>
+        Comment <span style={{background: RED, color: '#fff', borderRadius: 18, padding: '0 22px'}}>GIFT</span>
       </div>
-      <div style={{fontFamily: BODY, fontWeight: 700, fontSize: 38, color: '#fff', opacity: 0.92}}>aiidell.com</div>
+      <div style={{fontFamily: BODY, fontWeight: 700, fontSize: 38, color: RED, opacity: 1}}>aiidell.com</div>
     </div>
   );
 };
@@ -351,7 +351,7 @@ const Panel: React.FC = () => {
 const musicVolume = (f: number) => {
   const t = f / FPS;
   const fadeIn = interpolate(t, [0, 0.6], [0, 1], {extrapolateRight: 'clamp'});
-  const level = interpolate(t, [VIDEO_END - 0.2, VIDEO_END + 0.4], [0.22, 0.45], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+  const level = interpolate(t, [VIDEO_END - 0.2, VIDEO_END + 0.4], [0.09, 0.28], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
   const fadeOut = interpolate(t, [TOTAL_SECONDS - 1.0, TOTAL_SECONDS], [1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
   return fadeIn * level * fadeOut;
 };
